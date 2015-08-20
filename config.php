@@ -1,6 +1,6 @@
 <?php
 	$path_to_db = "/var/lib/minidlna/files.db";
-	$minidlnaserver = "http://mirobarsa.duckdns.org:8200";
+	$minidlnaserver = "http://<your_host>:<your_port>";
 	
 	// audio settings
 	$enableID3Tag = false;
