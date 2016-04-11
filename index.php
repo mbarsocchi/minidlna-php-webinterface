@@ -54,7 +54,7 @@ if (`pidof mplayer`) {
 				$printed =true;
 			}
 			$directory[$result['NAME']]=$result['PATH'];
-			$files[$result['NAME']]=$minidlnaserver."/MediaItems/".$result['DETAIL_ID'].".".$pathInfo['extension'];			
+			$files[$result['NAME']]= $minidlnaserver."/MediaItems/".$result['DETAIL_ID'].".".$pathInfo['extension'];			
 		}
 	}
 ?>
