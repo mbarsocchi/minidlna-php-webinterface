@@ -1,20 +1,12 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="Content-Language" content="it-IT" />
-	<title>Minidlna browser</title>	    
-    <link rel='stylesheet prefetch' href='photobrowser/css/photoswipe.css'>
-	<link rel='stylesheet prefetch' href='photobrowser/css/default-skin.css'>
-    <link rel="stylesheet" href="photobrowser/css/style.css">
-</head>
-<body>
 <?php
-	include("config.php");
-	
+if (`pidof mplayer`) {
+	header('Location: controls.php');
+	exit();
+}
 
+	include("config.php");
 	try {
-	$db   = new SQLite3($path_to_db);
+		$db   = new SQLite3($path_to_db);
 	} catch(ExtException $e) {
 		print $e->errorMessage();  
 	}
@@ -30,12 +22,14 @@
 			  ON `OB`.`DETAIL_ID`=`DT`.`ID`
 		   WHERE `PARENT_ID` = '".$parentId."'";
 	$res = $db->query($sql);
-
+	$isRoot =true;
 	if ($parentId != 0){
+		$isRoot=false;
 		$backId = substr($parentId,0,strrpos($parentId,'$'));
 		$backId = $backId ==""?0:$backId ;
 		print "<a href=\"?id=".$backId."\">..</a></br>";
 	}
+
 	$printed =false;
 	$isMusic = false;
 	$isImage = false;
@@ -63,19 +57,29 @@
 			$files[$result['NAME']]=$minidlnaserver."/MediaItems/".$result['DETAIL_ID'].".".$pathInfo['extension'];			
 		}
 	}
+?>
+<!DOCTYPE html>
+<title>Media Centre PRO 3000 Extreme Edition</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="style.css">
+<link rel='stylesheet prefetch' href='photobrowser/css/photoswipe.css'>
+<link rel='stylesheet prefetch' href='photobrowser/css/default-skin.css'>
+<link rel="stylesheet" href="photobrowser/css/style.css">
 
+<?php
+	if($isRoot){
+		echo "<a href=\"browse.php?b=".getcwd()."/stations\">Radio</a>";
+	}
 	if ($isMusic){
 		include "mp3player.php"; 
 	}elseif ($isImage){
 		include "responsive.php"; 
 	}else {
 		foreach($files as $name => $path){
-			print "<a href=\"".$path."\">".$name."</a>
-					<\br>
+			echo "<a href=\"".$path."\">".$name."</a>
 					";
 		}
 	}
 	$res->finalize();
+
 ?>
-</body>
-</html>	
