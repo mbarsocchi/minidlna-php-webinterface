@@ -1,0 +1,349 @@
+div#mp3Player {
+	min-width:450px;
+	font-family:Helvetica, Arial, sans-serif;
+}
+
+	div#mp3Player .ui-slider .ui-slider-handle {
+		width:7px;
+		margin-left:-3px;
+	}
+
+/* Loading screen */
+
+
+span#mp3Player-loading {
+	text-indent:-9999px;
+	background:url(../images/ajax-loader.gif) no-repeat 0 0;
+	display:block;
+	width:220px;
+	height:19px;
+	margin: 80px auto;
+}
+
+/* Audio Player */
+
+.source {display:none;}
+
+/* Controls */
+
+div#mp3Player-controls {
+	padding:10px 0;
+	margin-bottom:-2px;
+	text-align:center;
+}
+
+/* Table of Songs */
+table#mp3Player-table {
+	width:100%;
+	border-collapse:collapse;
+	font-size:12px;
+}
+
+table#mp3Player-table tr {
+	cursor:pointer;
+	padding:20px 0;
+}
+	
+table#mp3Player-table tr.current {
+	cursor: default;
+}
+	
+table#mp3Player-table tr th {
+	padding: 4px 8px;
+	text-align:left;
+}
+	
+table#mp3Player-table tr td {
+	padding:2px 5px;
+}
+
+table#mp3Player-table td.title {
+	font-size:14px;
+	font-weight: bold;
+}
+
+/* Buttons */
+
+div#mp3Player-buttons-container {
+	float:left; 
+	width:15%;
+	position:relative;
+}
+
+div#mp3Player-play-pause {
+	display:block;
+	width:24px;
+	margin:0 auto;
+}
+
+button#mp3Player-play {
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:24px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -103px 0px;
+	cursor:pointer;
+}
+
+button#mp3Player-pause {
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:18px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -84px 0px;
+	cursor:pointer;
+}
+
+button#mp3Player-next {
+	display:inline-block;
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:16px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -16px 2px;
+	position:absolute;
+	top:3px;
+	right:10%;
+	cursor:pointer;
+}
+
+button#mp3Player-prev {
+	display:inline-block;
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:17px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat 0px 2px;
+	position:absolute;
+	top:3px;
+	left:10%;
+	cursor:pointer;
+}
+
+button#mp3Player-play.disabled {
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:24px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -103px -22px;
+	cursor:default;
+}
+
+button#mp3Player-pause.disabled {
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:18px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -85px -22px;
+	cursor:default;
+}
+
+button#mp3Player-next.disabled {
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:16px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -16px -22px;
+	cursor:default;
+}
+
+button#mp3Player-prev.disabled {
+	border:none;
+	padding:0;
+	text-indent:-9999px;
+	width:17px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat 0px -22px;
+	cursor:default;
+}
+
+/* Track Display */
+div#mp3Player-progress-container {
+	width:55%; 
+	position:relative; 
+	float:left;
+	padding:4px 0;
+}
+	
+span#mp3Player-currentTime {
+	position: absolute; 
+	top: 6px;
+	left: 5%;
+	font-size:11px;
+}
+	
+span#mp3Player-remainingTime {
+	position: absolute; 
+	top: 6px;
+	right: 5%;
+	font-size:11px;
+}
+	
+div#mp3Player-progress {
+	width:55%; 
+	margin: 0 auto;
+	background:url(../images/ajax-loader2.gif) no-repeat -20px -7px;
+}
+
+div#mp3Player-progress.loaded {
+	background:none;
+}
+
+
+/* Volume */
+div#mp3Player-volume-container { 
+	float:right;  
+	width:29%;
+	position:relative;
+	text-align:center;
+}
+
+div#mp3Player-volume {
+	width:60%;
+	display:inline-block;
+	margin:0 3%;
+}
+
+span#mp3Player-min-volume {
+	display:inline-block;
+	width:19px;
+	height:21px;
+	background: url(../images/icons.png) no-repeat -61px 0px;
+	cursor:pointer;
+}
+
+span#mp3Player-max-volume {
+	display:inline-block;
+	width:17px;
+	height:21px;
+	background: url(../images/icons.png) no-repeat -37px 2px;
+	cursor:pointer;
+}
+
+span#mp3Player-min-volume.disabled {
+	width:27px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -57px -22px;
+	cursor:default;
+}
+
+span#mp3Player-max-volume.disabled {
+	width:24px;
+	height:23px;
+	background: url(../images/icons.png) no-repeat -33px -22px;
+	cursor:default;
+}
+
+/* Default styling */
+
+table#mp3Player-table .playerControls {
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,.1) 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,.1))); /* webkit */
+	background: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(0,0,0,.1) 100%); /* opera */
+}
+
+table#mp3Player-table th {
+	background: #6D6D6D; /* old browsers */
+	background: -moz-linear-gradient(top, rgba(0,0,0,.2) 0%, rgba(0,0,0,.4) 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,.2)), color-stop(100%, rgba(0,0,0,.4))); /* webkit */
+	background: -o-linear-gradient(top, rgba(0,0,0,.2) 0%,rgba(0,0,0,.4) 100%); /* opera */
+}
+
+table#mp3Player-table tr:nth-child(2n) {
+	background-color: rgba(255,255,255,.2);
+}
+
+table#mp3Player-table tr.current {
+	background-color: rgba(0,0,0,0.5); 
+	color:#fff;
+}
+
+#mp3Player {
+	border:2px solid rgba(0,0,0,.1);
+}
+
+/* UI Slider */
+
+/*
+ * jQuery UI Slider 1.8.11
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
+
+.ui-slider-horizontal { height: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottom: 0; }
+.ui-slider-vertical .ui-slider-range-max { top: 0; }
+
+/* Corner radius */
+.ui-corner-tl { -moz-border-radius-topleft: 4px/*{cornerRadius}*/; -webkit-border-top-left-radius: 4px/*{cornerRadius}*/; border-top-left-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-tr { -moz-border-radius-topright: 4px/*{cornerRadius}*/; -webkit-border-top-right-radius: 4px/*{cornerRadius}*/; border-top-right-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-bl { -moz-border-radius-bottomleft: 4px/*{cornerRadius}*/; -webkit-border-bottom-left-radius: 4px/*{cornerRadius}*/; border-bottom-left-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-br { -moz-border-radius-bottomright: 4px/*{cornerRadius}*/; -webkit-border-bottom-right-radius: 4px/*{cornerRadius}*/; border-bottom-right-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-top { -moz-border-radius-topleft: 4px/*{cornerRadius}*/; -webkit-border-top-left-radius: 4px/*{cornerRadius}*/; border-top-left-radius: 4px/*{cornerRadius}*/; -moz-border-radius-topright: 4px/*{cornerRadius}*/; -webkit-border-top-right-radius: 4px/*{cornerRadius}*/; border-top-right-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-bottom { -moz-border-radius-bottomleft: 4px/*{cornerRadius}*/; -webkit-border-bottom-left-radius: 4px/*{cornerRadius}*/; border-bottom-left-radius: 4px/*{cornerRadius}*/; -moz-border-radius-bottomright: 4px/*{cornerRadius}*/; -webkit-border-bottom-right-radius: 4px/*{cornerRadius}*/; border-bottom-right-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-right {  -moz-border-radius-topright: 4px/*{cornerRadius}*/; -webkit-border-top-right-radius: 4px/*{cornerRadius}*/; border-top-right-radius: 4px/*{cornerRadius}*/; -moz-border-radius-bottomright: 4px/*{cornerRadius}*/; -webkit-border-bottom-right-radius: 4px/*{cornerRadius}*/; border-bottom-right-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-left { -moz-border-radius-topleft: 4px/*{cornerRadius}*/; -webkit-border-top-left-radius: 4px/*{cornerRadius}*/; border-top-left-radius: 4px/*{cornerRadius}*/; -moz-border-radius-bottomleft: 4px/*{cornerRadius}*/; -webkit-border-bottom-left-radius: 4px/*{cornerRadius}*/; border-bottom-left-radius: 4px/*{cornerRadius}*/; }
+.ui-corner-all { -moz-border-radius: 4px/*{cornerRadius}*/; -webkit-border-radius: 4px/*{cornerRadius}*/; border-radius: 4px/*{cornerRadius}*/; }
+
+/* Overlays */
+.ui-widget-overlay { background: #aaaaaa/*{bgColorOverlay}*/ url(images/ui-bg_flat_0_aaaaaa_40x100.png)/*{bgImgUrlOverlay}*/ 50%/*{bgOverlayXPos}*/ 50%/*{bgOverlayYPos}*/ repeat-x/*{bgOverlayRepeat}*/; opacity: .3;filter:Alpha(Opacity=30)/*{opacityOverlay}*/; }
+.ui-widget-shadow { margin: -8px/*{offsetTopShadow}*/ 0 0 -8px/*{offsetLeftShadow}*/; padding: 8px/*{thicknessShadow}*/; background: #aaaaaa/*{bgColorShadow}*/ url(images/ui-bg_flat_0_aaaaaa_40x100.png)/*{bgImgUrlShadow}*/ 50%/*{bgShadowXPos}*/ 50%/*{bgShadowYPos}*/ repeat-x/*{bgShadowRepeat}*/; opacity: .3;filter:Alpha(Opacity=30)/*{opacityShadow}*/; -moz-border-radius: 8px/*{cornerRadiusShadow}*/; -webkit-border-radius: 8px/*{cornerRadiusShadow}*/; border-radius: 8px/*{cornerRadiusShadow}*/; }
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family: Verdana,Arial,sans-serif/*{ffDefault}*/; font-size: 1.1em/*{fsDefault}*/; }
+.ui-widget .ui-widget { font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana,Arial,sans-serif/*{ffDefault}*/; font-size: 1em; }
+.ui-widget-content { border: 1px solid #aaaaaa/*{borderColorContent}*/; background: #ffffff/*{bgColorContent}*/ url(images/ui-bg_flat_75_ffffff_40x100.png)/*{bgImgUrlContent}*/ 50%/*{bgContentXPos}*/ 50%/*{bgContentYPos}*/ repeat-x/*{bgContentRepeat}*/; color: #222222/*{fcContent}*/; }
+.ui-widget-content a { color: #222222/*{fcContent}*/; }
+.ui-widget-header { border: 1px solid #aaaaaa/*{borderColorHeader}*/; background: #cccccc/*{bgColorHeader}*/ url(images/ui-bg_highlight-soft_75_cccccc_1x100.png)/*{bgImgUrlHeader}*/ 50%/*{bgHeaderXPos}*/ 50%/*{bgHeaderYPos}*/ repeat-x/*{bgHeaderRepeat}*/; color: #222222/*{fcHeader}*/; font-weight: bold; }
+.ui-widget-header a { color: #222222/*{fcHeader}*/; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3/*{borderColorDefault}*/; background: #e6e6e6/*{bgColorDefault}*/ url(images/ui-bg_glass_75_e6e6e6_1x400.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/; font-weight: normal/*{fwDefault}*/; color: #555555/*{fcDefault}*/; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #555555/*{fcDefault}*/; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #999999/*{borderColorHover}*/; background: #dadada/*{bgColorHover}*/ url(images/ui-bg_glass_75_dadada_1x400.png)/*{bgImgUrlHover}*/ 50%/*{bgHoverXPos}*/ 50%/*{bgHoverYPos}*/ repeat-x/*{bgHoverRepeat}*/; font-weight: normal/*{fwDefault}*/; color: #212121/*{fcHover}*/; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #212121/*{fcHover}*/; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa/*{borderColorActive}*/; background: #ffffff/*{bgColorActive}*/ url(images/ui-bg_glass_65_ffffff_1x400.png)/*{bgImgUrlActive}*/ 50%/*{bgActiveXPos}*/ 50%/*{bgActiveYPos}*/ repeat-x/*{bgActiveRepeat}*/; font-weight: normal/*{fwDefault}*/; color: #212121/*{fcActive}*/; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121/*{fcActive}*/; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+/* Misc rules */
+
+.display-off {
+	display:none !important;
+}
+
+.mp3Player-group:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .mp3Player-group             { zoom: 1; } /* IE6 */
+*:first-child+html .mp3Player-group { zoom: 1; } /* IE7 */
