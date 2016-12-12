@@ -3,12 +3,12 @@ if (`pidof mplayer`) {
 	header('Location: controls.php');
 	exit();
 }
-
+	$html ="";
 	include("config.php");
 	try {
 		$db   = new SQLite3($path_to_db);
 	} catch(ExtException $e) {
-		print $e->errorMessage();  
+		$html .= $e->errorMessage();  
 	}
 	if (isset($_GET['id'])){
 		$parentId = $_GET['id'];
@@ -27,7 +27,7 @@ if (`pidof mplayer`) {
 		$isRoot=false;
 		$backId = substr($parentId,0,strrpos($parentId,'$'));
 		$backId = $backId ==""?0:$backId ;
-		print "<a href=\"?id=".$backId."\">..</a></br>";
+		$html .= "<a href=\"?id=".$backId."\">..</a></br>";
 	}
 
 	$printed =false;
@@ -39,7 +39,7 @@ if (`pidof mplayer`) {
 		if ($result['CLASS']== 'container.storageFolder' || $result['CLASS']== 'container.album.musicAlbum'
 			|| $result['CLASS']=='container.person.musicArtist' || $result['CLASS']=='container.genre.musicGenre'
 			|| $result['CLASS']=='container.playlistContainer' || $result['CLASS']=='container.album.photoAlbum'){
-			print "<a href=\"?id=".$result['OBJECT_ID']."#&gid=1&pid=1\">".$result['NAME']."</a></br>";
+			$html .= "<a href=\"?id=".$result['OBJECT_ID']."#&gid=1&pid=1\">".$result['NAME']."</a></br>";
 		}else {
 			$pathInfo= pathinfo($result['PATH']);
 			if (!$printed && strtolower($pathInfo['extension']) == 'mp3'|| strtolower($pathInfo['extension'])=='flac'){
@@ -67,8 +67,10 @@ if (`pidof mplayer`) {
 <link rel="stylesheet" href="photobrowser/css/style.css">
 
 <?php
+	echo $html;
 	if($isRoot){
-		echo "<a href=\"browse.php?b=".getcwd()."/stations\">Radio</a>";
+		echo "<a href=\"browse.php?b=".getcwd()."/stations\">Radio</a>
+		";
 	}
 	if ($isMusic){
 		include "mp3player.php"; 

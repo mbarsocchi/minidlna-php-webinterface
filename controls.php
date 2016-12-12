@@ -1,10 +1,10 @@
 <?php
+
 if (! `pidof mplayer`) {
 	shell_exec('rm /tmp/mplayer-fifo');
 	header('Location: index.php');
 	exit();
 }
-
 if ($_GET['action']) {
 	switch ($_GET['action']) {
 		case 'pause':
@@ -16,20 +16,27 @@ if ($_GET['action']) {
 			shell_exec('echo "pause" >/tmp/mplayer-fifo');
 			$_GET['paused'] = 0;
 			break;
-			
-		case 'back':
-			shell_exec('echo "pausing_keep seek -10" >/tmp/mplayer-fifo');
-			break;
-			
-		case 'forward':
-			shell_exec('echo "pausing_keep seek +10" >/tmp/mplayer-fifo');
-			break;
-			
+	
 		case 'close':
 			shell_exec('echo "quit" >/tmp/mplayer-fifo');
 			while (`pidof mplayer`) {
 				sleep(1);
 			}
+			break;
+		case 'volup':
+			shell_exec('echo "volume 100" >/tmp/mplayer-fifo');
+			break;
+			
+		case 'prev':
+			shell_exec('echo pt_step -1  >/tmp/mplayer-fifo');
+			break;
+			
+		case 'next':
+			shell_exec('echo pt_step 1 >/tmp/mplayer-fifo');
+			break;
+			
+		case 'voldown':
+			shell_exec('echo "volume -100" >/tmp/mplayer-fifo');
 			break;
 	}
 	
@@ -48,8 +55,8 @@ if ($_GET['action']) {
 <?php else: ?>
 	<a href="?action=pause">Pause</a>
 <?php endif; ?>
-
-<a href="?action=back">Step Back</a>
-<a href="?action=forward">Step Forward</a>
+<a href="?action=volup">Vol ++</a>
+<a href="?action=voldown">Vol --</a>
+<a href="?action=next">Next >></a>
+<a href="?action=prev"><< Prev</a>
 <a href="?action=close">Quit</a>
-

@@ -1,12 +1,31 @@
-<link rel="stylesheet" href="mp3player/player/css/styles.css" type="text/css" media="all" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script type="text/javascript" src="mp3player/player/mp3playerplugin.js"></script> 
 <?php
 $DirectoryToScan = $folder;
 $audioType = $exstension;
 $totalCols = 0;
+function clientInSameSubnet() {
+    if ((substr($_SERVER['REMOTE_ADDR'],0,8) == "192.168.") || ($_SERVER['REMOTE_ADDR'] == "127.0.0.1")) {
+		$result =true;
+	} else{
+		$result =false;
+	} 
+	return $result;
+}
+
+if (clientInSameSubnet()){
+	shell_exec('killall mplayer');
+	shell_exec('rm /tmp/mplayer-fifo');
+	shell_exec('mkfifo /tmp/mplayer-fifo');
+	shell_exec('./playfold.sh "' . $DirectoryToScan . '"');
+	header('HTTP/1.0 302 Temp');
+	header('Location: controls.php');
+	for ($i = 0; $i < 1000; $i++) { echo 'AAAAAAA'; }
+	flush();
+}
 ?>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/mp3playerplugin.js"></script> 
 <audio id="mp3Player-player">
 	<source id="mp3Player-mp3" src="" />
 	<p class="no-html5">Your browser doesn\'t support HTML5 audio</p>
